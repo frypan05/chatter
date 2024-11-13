@@ -1,0 +1,45 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dhappa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>hehe</h1>
+    <div id="chat-container">
+        <div id="messages"></div>
+        <textarea id="messageInput" placeholder="Enter your message"></textarea>
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <script>
+        async function sendMessage() {
+            const message = document.getElementById('messageInput').value;
+            const response = await fetch('/send-message', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message })
+            });
+            const result = await response.text();
+            console.log(result);
+    
+            // Fetch messages after sending a message
+            getMessages();
+        }
+    
+        async function getMessages() {
+            const response = await fetch(`/get-messages`);
+            const messages = await response.json();
+            const messagesDiv = document.getElementById('messages');
+            messagesDiv.innerHTML = messages.map(msg => `<div>${msg}</div>`).join('');
+        }
+    
+        getMessages(); // Fetch messages when the page loads
+        setInterval(getMessages, 3000); // Fetch messages every 5 seconds
+    </script>
+</body>
+</html>
