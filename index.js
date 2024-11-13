@@ -36,7 +36,7 @@ async function getPasteContent() {
 }
 
 // Endpoint to receive messages from frontend
-app.post('https://gappe-five.vercel.app/send-message', async (req, res) => {
+app.post('/send-message', async (req, res) => {
     const message = req.body.message;
     if (!pasteId) {
         await createPaste(message);
@@ -47,7 +47,7 @@ app.post('https://gappe-five.vercel.app/send-message', async (req, res) => {
 });
 
 // Endpoint to retrieve messages for frontend
-app.get('https://gappe-five.vercel.app/get-messages', async (req, res) => {
+app.get('/get-messages', async (req, res) => {
     const content = await getPasteContent();
     res.send(content);
 });

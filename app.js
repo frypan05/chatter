@@ -9,7 +9,7 @@ app.use(express.json()); // Parse JSON bodies
 app.use(express.static('public')); // Serve static files from the 'public' directory
 
 // Route to send a message
-app.post('https://gappe-five.vercel.app/send-message', (req, res) => {
+app.post('/send-message', (req, res) => {
 const { message } = req.body;
 messages.push(message); // Store the received message
 console.log('Received message:', message);
@@ -17,7 +17,7 @@ res.send('Message received!');
 });
 
 // Route to retrieve messages
-app.get('https://gappe-five.vercel.app/get-messages', (req, res) => {
+app.get('/get-messages', (req, res) => {
 res.json(messages); // Return all stored messages
 });
 
