@@ -1,6 +1,6 @@
 function sendMessage() {
     const message = document.getElementById('messageInput').value;
-    fetch('/send-message', {
+    fetch('https://gappe-five.vercel.app/send-message', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -18,7 +18,7 @@ function sendMessage() {
 }
 
 function getMessages() {
-    fetch('/get-messages')
+    fetch('https://gappe-five.vercel.app/get-messages')
     .then(response => response.json())
     .then(messages => {
         const messagesDiv = document.getElementById('messages');
