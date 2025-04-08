@@ -35,7 +35,7 @@ This is a simple yet creative one-on-one chat application built using **Socket.I
 
 ```bash
 npm install
-### 🔐 Create a `.env` File with Your Pastebin API Key
 
+### 🔐 Create a `.env` File with Your Pastebin API Key
 ```env
 PASTEBIN_API_KEY=your_api_key_here
