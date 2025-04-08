@@ -31,3 +31,7 @@ This is a simple yet creative one-on-one chat application built using **Socket.I
    ```bash
    git clone https://github.com/frypan05/chatter.git
    cd chatter
+### Install dependencies:
+
+```bash
+npm install
